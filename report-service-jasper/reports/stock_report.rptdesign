@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <text-property name="title">stock Report</text-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/chart_listing.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.chartlisting</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <script-data-source name="srcStocks" id="37"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="dataSetSocks" id="38">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">customerId</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">firstName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">lastName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">middleName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">emailId</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">mobileNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">customerId</property>
+                    <text-property name="displayName">customerId</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">firstName</property>
+                    <text-property name="displayName">firstName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lastName</property>
+                    <text-property name="displayName">lastName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">middleName</property>
+                    <text-property name="displayName">middleName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">emailId</property>
+                    <text-property name="displayName">emailId</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">mobileNumber</property>
+                    <text-property name="displayName">mobileNumber</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">customerId</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">firstName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">lastName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">middleName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">emailId</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">mobileNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">srcStocks</property>
+            <method name="open"><![CDATA[count = 0;
+
+// create instance of
+// the GetStockHistory class
+gsh = new Packages.com.baeldung.birt.engine.Birt.StockDaoMock();
+
+//Load the List
+
+stock = gsh.getStockValues("Java");]]></method>
+            <method name="fetch"><![CDATA[if(count < stock.size()){
+       row["customerId"] = stock.get(count).getCustomerId();
+       row["firstName"] = stock.get(count).getFirstName();
+       row["lastName"] = stock.get(count).getLastName();
+       row["middleName"] = stock.get(count).getMiddleName();
+       row["emailId"] = stock.get(count).getEmailId();
+       row["mobileNumber"] = stock.get(count).getMobileNumber();
+       count++;
+       return true;
+}
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="CustomerDataSet" id="79">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">customerId</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">firstName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">lastName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">middleName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">emailId</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">mobileNumber</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">customerId</property>
+                    <text-property name="displayName">customer Id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">firstName</property>
+                    <text-property name="displayName">first Name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">lastName</property>
+                    <text-property name="displayName">lastName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">middleName</property>
+                    <text-property name="displayName">middle Name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">emailId</property>
+                    <text-property name="displayName">emailId</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">mobileNumber</property>
+                    <text-property name="displayName">mobileNumber</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">customerId</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">firstName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">lastName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">middleName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">emailId</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">mobileNumber</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">srcStocks</property>
+            <method name="open"><![CDATA[count = 0;
+
+// create instance of
+// the GetStockHistory class
+gsh = new Packages.de.vogella.birt.stocks.daomock.StockDaoMock();
+
+//Load the List
+
+stock = gsh.getStockValues("Java");]]></method>
+            <method name="fetch"><![CDATA[if(count < stock.size()){
+       row["customerId"] = stock.get(count).getCustomerId();
+       row["mobileNumber"] = stock.get(count).getMobileNumber();
+       row["firstName"] = stock.get(count).getFirstName();
+       row["lastName"] = stock.get(count).getLastName();
+       row["middleName"] = stock.get(count).getMiddleName();
+       row["emailId"] = stock.get(count).getEmailId();
+       count++;
+       return true;
+}
+
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="33">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="4">
+            <property name="height">0.322in</property>
+            <property name="width">5.968in</property>
+            <column id="5"/>
+            <row id="6">
+                <property name="height">0.322in</property>
+                <property name="verticalAlign">text-bottom</property>
+                <cell id="7">
+                    <property name="verticalAlign">top</property>
+                    <label id="8">
+                        <property name="fontWeight">bold</property>
+                        <property name="textUnderline">underline</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">Report Header</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+        <table id="39">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">thin</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">thin</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">thin</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">thin</property>
+            <property name="dataSet">dataSetSocks</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">customerId</property>
+                    <text-property name="displayName">customerId</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["customerId"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">firstName</property>
+                    <text-property name="displayName">firstName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["firstName"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">lastName</property>
+                    <text-property name="displayName">lastName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["lastName"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">middleName</property>
+                    <text-property name="displayName">middleName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["middleName"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">emailId</property>
+                    <text-property name="displayName">emailId</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["emailId"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">mobileNumber</property>
+                    <text-property name="displayName">mobileNumber</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mobileNumber"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <column id="73"/>
+            <column id="74"/>
+            <column id="75"/>
+            <column id="76"/>
+            <column id="77"/>
+            <column id="78"/>
+            <header>
+                <row id="40">
+                    <cell id="41">
+                        <label id="42">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">Customer Id</text-property>
+                        </label>
+                    </cell>
+                    <cell id="43">
+                        <label id="44">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">First Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="45">
+                        <label id="46">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">Last Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="47">
+                        <label id="48">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">Middle Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="49">
+                        <label id="50">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">Email Id</text-property>
+                        </label>
+                    </cell>
+                    <cell id="51">
+                        <label id="52">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <text-property name="text">Mobile Number</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="53">
+                    <cell id="54">
+                        <data id="55">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">customerId</property>
+                        </data>
+                    </cell>
+                    <cell id="56">
+                        <data id="57">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">firstName</property>
+                        </data>
+                    </cell>
+                    <cell id="58">
+                        <data id="59">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">lastName</property>
+                        </data>
+                    </cell>
+                    <cell id="60">
+                        <data id="61">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">middleName</property>
+                        </data>
+                    </cell>
+                    <cell id="62">
+                        <data id="63">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">emailId</property>
+                        </data>
+                    </cell>
+                    <cell id="64">
+                        <data id="65">
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">mobileNumber</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="66">
+                    <cell id="67"/>
+                    <cell id="68"/>
+                    <cell id="69"/>
+                    <cell id="70"/>
+                    <cell id="71"/>
+                    <cell id="72"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
