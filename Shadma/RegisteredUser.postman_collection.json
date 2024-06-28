@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "16e5bc7f-351d-4d1d-9546-02ae06bd88ff",
+		"name": "RegisteredUser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9090/registeredUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\":\"Shadma Khan\",\n\t\"toName\":\"shalini\",\n\t\"city\":\"kalyan\",\n\t\"country\":\"Indiya\",\n\t\"pincode\":\"421103\",\n\t\"fullAddress\":\"shahad\",\n\t\"DOB\":\"23121995\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/registeredUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"registeredUser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

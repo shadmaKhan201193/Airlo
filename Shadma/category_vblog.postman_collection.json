@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "db870515-1476-4ce1-8262-06610a9c8c96",
+		"name": "category_vblog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9090/api/categories/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categorytitle\":\"programming\",\n\t\"categoryDescription\":\" cate is related toprogramming\"\n\t\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/categories/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/categories/55",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categorytitle\":\"programming\",\n\t\"categoryDescription\":\" cate is related toprogramming-up\"\n\t\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/categories/55",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"categories",
+						"55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/categories/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categorytitle\":\"simple\",\n\t\"categoryDescription\":\"new cate is related toprogramming\"\n\t\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/categories/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/categories/allcategory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categorytitle\":\"simple\",\n\t\"categoryDescription\":\"new cate is related toprogramming\"\n\t\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/categories/allcategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"categories",
+						"allcategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/categories/singlecategory/55",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categorytitle\":\"simple\",\n\t\"categoryDescription\":\"new cate is related toprogramming\"\n\t\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/categories/singlecategory/55",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"categories",
+						"singlecategory",
+						"55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/categories/singlecategory/65",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"categorytitle\":\"simple\",\n\t\"categoryDescription\":\"new cate is related toprogramming\"\n\t\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/categories/singlecategory/65",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"categories",
+						"singlecategory",
+						"65"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
