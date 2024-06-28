@@ -1,0 +1,135 @@
+*** What is SSl And 2Way SSL /Why we use SSL:
+
+SSL is the backbone of our secure Internet and it protects your sensitive information as it travels across the world's computer networks. SSL is essential for protecting your website, even if it doesn't handle sensitive information like credit cards. It provides privacy, critical security and data integrity for both your websites and your users' personal information
+
+The primary reason why SSL is used is to keep sensitive information sent across the Internet encrypted. so only required person can use that info.
+This is important because the information you send on the Internet is passed from computer to computer to get to the destination server. Any computer in between you and the server can see your credit card numbers, usernames and passwords, and other sensitive information if it is not encrypted with an SSL certificate. When an SSL certificate is used, the information becomes unreadable to everyone except for the server you are sending the information to. This protects it from hackers and identity thieves.
+
+In two-way SSL authentication, the client application verifies the identity of the server application, and then the server application verifies the identity of the client application. Both parties share their public certificates, and then validation is performed
+
+ There are 2 important file
+ 1: keyStore ,keyStore Contains only Private key
+ 2: trustStore,  trustStore contain publicKey and Ciner Certificate 
+
+** client store its privateKey (keyStore) and doesn't share it to anyone ,client only share its publicKey and ciner Certificate(trustStore) to the server in a jks file format
+
+** server store its privateKey (keyStore) and doesn't share it to anyone ,server only share its publicKey and ciner Certificate (trustStore) to the client in a jks file format
+
+____________What is PKCS12   and JKS(Java Keystore)_______________
+
+A PKCS12 archive file format for storing server certificates, intermediate certificate if any, and private key into a single encryptable file where 
+JKS was a format specific to Java,so we can conver our PKCS12(.p12) file to JKS(.jks) file format
+
+__________________________________________________________________________________________________________________________________________________________
+
+**steps for 2wayssl for client server
+
+1.create a key of ciner certifictae
+2.create ciner certificate and import it on Trusted Root Certification Authorities from where client and server sighn there's certificate 
+3. create key for cilent 
+4. create csr(request) file with the help of client key and cnf file 
+5. generate certificate for client  and sighn it to the ciner certificate
+6. generate P12 file for client
+7. genetare keyStore(jks)file with the help of p12 file for client
+8. generate key ,csr, certificate  P12,and keyStore(jks) file for Server
+9.for client trustStore import server ciner Certificate and public Key into ClienttrustStore.jks file 
+10. for Server trsutStore import client ciner Certificate and publicKey into ServertrustStore.jks file
+
+***********************************************************************************************************************************
+#####commands for creating 2wayssl certificates for client and server------
+
+--- first create signer certificates and key-------
+
+
+openssl genrsa -des3 -out rootCA.key 4096
+
+openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -out rootCA.crt
+
+
+--------------------create key client,  for csr and certificates  add SAN file for extra requirement fields like subjectAltName  --------------
+
+openssl genrsa -out localhost9001.key 2048
+
+openssl req -newkey rsa:2048 -nodes -sha256 -keyout localhost9001.key -out localhost9001.csr -config openssl-san.cnf
+
+openssl x509 -req -in localhost9001.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out localhost9001.crt -days 500 -sha256 -extensions req_ext -extfile openssl-san.cnf
+
+--------------------first create key server, for csr and certificates  add SAN file for extra requirement fields like subjectAltName--------------
+
+openssl genrsa -out localhost9002.key 2048
+
+openssl req -newkey rsa:2048 -nodes -sha256 -keyout localhost9002.key -out localhost9002.csr -config openssl-san2.cnf
+
+
+openssl x509 -req -in localhost9002.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out localhost9002.crt -days 500 -sha256 -extensions req_ext -extfile openssl-san2.cnf
+
+
+-----create a p12 file for client and server-----------------
+
+openssl pkcs12 -export -in localhost9001.crt -inkey localhost9001.key -out localhost9001.p12 -name localhost9001 -CAfile rootCA.crt -caname rootCA -chain
+
+openssl pkcs12 -export -in localhost9002.crt -inkey localhost9002.key -out localhost9002.p12 -name localhost9002 -CAfile rootCA.crt -caname rootCA -chain
+
+
+
+
+---------- for creating a keystore jks we must have p12 file and private key of client and server  --------------
+
+keytool -importkeystore -deststorepass 2wayssl -destkeypass 2wayssl -destkeystore localhost9001.jks -srckeystore localhost9001.p12 -srcstoretype PKCS12 -srcstorepass 2wayssl -alias localhost9001
+
+keytool -importkeystore -deststorepass 2wayssl -destkeypass 2wayssl -destkeystore localhost9002.jks -srckeystore localhost9002.p12 -srcstoretype PKCS12 -srcstorepass 2wayssl -alias localhost9002
+
+
+--------------------truststore jks for client localhost9001 ,import ciner certificate and publickey/ORCertificate of server in jks file---------
+
+keytool -import -file rootCA.crt -alias rootCA -keystore localhost9001trust.jks
+
+keytool -import -file localhost9002.crt -alias localhost9002 -keystore localhost9001trust.jks
+
+
+-----------------------------truststore jks for server localhost9002, import ciner certificate and publickey/ORCertificate of client in jks file  ---------
+
+keytool -import -file rootCA.crt -alias rootCA -keystore localhost9002trust.jks
+
+keytool -import -file localhost9001.crt -alias localhost9001 -keystore localhost9002trust.jks
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+####### commands for printing csr jks file
+
+openssl req -noout -text -in localhost9001.csr
+
+keytool -list -v -keystore localhost9001.jks
+
+
+--------command for getting a public key from certificate----
+
+   openssl x509 -pubkey -noout -in localhost9001.crt  > pubkey.pem
+   
+   
+
+---------------------------------------------------some 2wayssl links for refer--------------
+
+
+https://help.bizagi.com/bpm-suite/en/index.html?subjectaltname_support.htm
+
+https://gist.github.com/fntlnz/cf14feb5a46b2eda428e000157447309
+
+https://www.neovasolutions.com/2020/03/19/steps-to-implement-2-way-mutual-ssl-authentication/
+
+https://www.ibm.com/docs/en/zosconnect/3.0?topic=ee-keystores-truststores
+
+
+
+
+
+
+
+
+
+
+
+
+
+

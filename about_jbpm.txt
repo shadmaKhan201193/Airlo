@@ -1,0 +1,13 @@
+
+
+first in sts:
+Help | Install new Software | Add the Update site:
+https://download.jboss.org/jbpm/release/7.48.0.Final/updatesite/
+
+
+-----------------------------------
+git 
+
+ https://github.com/fmarchioni/mastertheboss
+ 
+ https://github.com/Java-Techie-jt/spring-drools

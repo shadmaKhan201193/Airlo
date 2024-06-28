@@ -1,0 +1,9 @@
+https://programming.vip/docs/the-spring-cloud-gateway-modifies-the-content-of-the-request-and-response-body.html
+
+https://stackoverflow.com/questions/70996589/how-to-modify-body-of-the-spring-boot-reactive-oauth2-authorization-request/71025638#71025638
+
+https://stackoverflow.com/questions/64439102/how-to-get-response-body-in-spring-gateway
+
+https://www.tabnine.com/code/java/classes/org.springframework.web.server.ServerWebExchange
+
+https://oril.co/blog/spring-cloud-gateway-security-with-jwt/
